@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "beercss": "^3.0.8",
+    "jquery": "^3.6.4",
     "material-dynamic-colors": "^0.1.7"
   }
 }
