@@ -31,24 +31,25 @@
         </nav>
     </header>
     <main class="responsive">
-        <article class="medium no-padding grey4">
-            <div class="padding amber5 absolute center middle">
-              <div class="field large fill round">
-                <input type="text">
-                <span class="helper black-text">Login</span>
-              </div>
-              <div class="field large fill round">
-                <input type="password">
-                <span class="helper black-text">Senha</span>
-              </div>
-                <button class="responsive medium-elevate large">
+        <article class="border large center-align middle-align amber5">
+            <div class="padding ">
+                <div class="field label border round large white">
+                    <input type="text" id="login">
+                    <label>login</label>
+                  </div>
+                  <div class="field label border round large white">
+                    <input type="password" id="senha">
+                    <label>senha</label>
+                  </div>
+                  <button class="black" id="teste" onclick="logar()">
                     <i>home</i>
                     <span>Entrar</span>
                   </button>
+                  
             </div>
-            
           </article>
     </main>
-    <script src="/node_modules/beercss/dist/cdn/beer.min.js"></script>
+    <script type="module" src="/login/login.js"></script>
+    <script type="module" src="/node_modules/beercss/dist/cdn/beer.min.js"></script>
 </body>
 </html>
