@@ -2,11 +2,23 @@
 var mes01, mes02, mes03, mes04, mes05, mes06, mes07, mes08, mes09, mes10, mes11, mes12;
 
 window.onload = function () {
-    const calcularMedia = document.getElementById("calcular");
-    calcularMedia.addEventListener("click", escreverAMediaAnual);
+    document.querySelector("#meses-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        let media = calcularMediaAnual();
+        alert(media);
+        escreverAMediaAnual();
+        escreverOrcamento();
+        let valorFinal = orcar();
+        alert("VAlor De geração: " + valorFinal.toFixed(2));
+        salvar();
+        alert("DADOS SALVOS NA MEMORIA DO NAVEGADOR ");
+        _salvarObjeto();
+
+    });
+
 }
 
-function pegarOsValoresMensais() {
+function calcularMediaAnual() {
     mes01 = Number(document.getElementById("janeiro").value);
     mes02 = Number(document.getElementById("feveiro").value);
     mes03 = Number(document.getElementById("marco").value);
@@ -19,10 +31,6 @@ function pegarOsValoresMensais() {
     mes10 = Number(document.getElementById("outubro").value);
     mes11 = Number(document.getElementById("novembro").value);
     mes12 = Number(document.getElementById("dezembro").value);
-}
-
-function calcularMediaAnual() {
-    pegarOsValoresMensais();
     var media = ((mes01 + mes02 + mes03 + mes04 + mes05 + mes06 + mes07 + mes08 + mes09 + mes10 + mes11 + mes12) / 12).toFixed(2);
     return media;
 }
@@ -30,7 +38,8 @@ function calcularMediaAnual() {
 
 
 function escreverAMediaAnual() {
-    evento(event);
+
+    //evento(event);
     var mediaAnual = calcularMediaAnual();
     var med = document.getElementById("media");
     med.value = mediaAnual;
@@ -42,8 +51,6 @@ function evento(event) {
     return event.preventDefault();
 }
 
-const calcular = document.getElementById("orcar");
-calcular.addEventListener("click", escreverOrcamento);
 
 var horasSol, custoDisponibilidade, fator;
 
@@ -61,9 +68,34 @@ function orcar() {
 function escreverOrcamento() {
     evento(event);
     pegarOsValores();
+    escreverAMediaAnual();
     var orcamento = orcar();
     var budget = document.getElementById("geracao");
     budget.value = orcamento.toFixed(2);
+    salvar();
 }
 
-export const VALOR_ORCAMENTO = orcar();
+//LOCAL STORAGE
+
+function salvar() {
+    localStorage.custo = document.getElementById("custo_diponibilidade").value;
+    localStorage.horasSol = document.getElementById("horas_sol").value;
+    localStorage.fator = document.getElementById("fator").value;
+    localStorage.media = calcularMediaAnual();
+    localStorage.geracao = document.getElementById("geracao").value
+}
+
+function _salvarObjeto() {
+    const lista = new Lista();
+    const orcamento = new Orcamento();
+    orcamento.custoDisponibilidade = Number(localStorage.custo);
+    orcamento.horasSol = Number(localStorage.horasSol);
+    orcamento.fator = Number(localStorage.fator);
+    orcamento.media = Number(localStorage.media);
+    orcamento.valorGerado = Number(localStorage.geracao);
+    lista.adicionarNovoOrcamento(orcamento);
+
+}
+
+
+

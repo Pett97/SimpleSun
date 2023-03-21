@@ -1,13 +1,24 @@
+
 class Orcamento {
   static _proximoId = 1;
 
-  constructor(custoDisponibilidade, horasSol, fator, media) {
+  constructor() {
     this._id = Orcamento._proximoId++;
-    this._custoDisponibilidade = custoDisponibilidade;
-    this._horasSol = horasSol;
-    this._fator = fator;
-    this._media = media;
+    this._custoDisponibilidade = localStorage.custo;
+    this._horasSol = localStorage.horasSol;
+    this._fator = localStorage.fator / 100 ;
+    this._media = localStorage.media;
     this._mediasDias = 30.4;
+    this._resultado = localStorage.geracao;
+  }
+
+
+  get resultado(){
+    return this._resultado;
+  }
+
+  set resultado(novoResultado){
+    return this._resultado = novoResultado;
   }
 
   get id() {
@@ -32,7 +43,7 @@ class Orcamento {
   }
 
   set fator(novoFator) {
-    return this._fator = novoFator;
+    return this._fator = (novoFator / 100) ;
   }
 
   get horasSol() {
@@ -52,12 +63,4 @@ class Orcamento {
   }
 
 }
-
-let a = new Orcamento(50, 4.78, 80, 300);
-let b = new Orcamento(50, 4.78, 80, 300);
-let c = new Orcamento(50, 4.78, 80, 300);
-
-console.log(a.id);
-console.log(b.id);
-console.log(c.id);
 

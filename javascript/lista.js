@@ -4,11 +4,7 @@ class Lista {
     }
 
     adicionarNovoOrcamento(orcamento) {
-         return this._orcamentos.push(Orcamento);
-    }
-
-    removerOrcamento(orcamento){
-        
+         return this._orcamentos.push(orcamento);
     }
 
     quantidadeDeOrcamentos(){
@@ -19,6 +15,3 @@ class Lista {
 
 }
 
-
-let lista = new Lista();
-console.log(lista.quantidadeDeOrcamentos());
