@@ -1,4 +1,3 @@
-
 class Orcamento {
   static _proximoId = 1;
 
@@ -28,6 +27,10 @@ class Orcamento {
   get valorGerado() {
     let valorGerado = ((this._media - this._custoDisponibilidade) / (this._horasSol * (this._fator / 100) * this._mediasDias));
     return valorGerado.toFixed(2);
+  }
+
+  set valorGerado(novoValor){
+    return this._valorGerado = novoValor;
   }
 
   get media() {
@@ -63,4 +66,6 @@ class Orcamento {
   }
 
 }
+
+export { Orcamento };
 

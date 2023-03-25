@@ -1,5 +1,9 @@
+import { Lista } from "./lista.js";
+import { Orcamento } from "./orcamento.js";
 
 var mes01, mes02, mes03, mes04, mes05, mes06, mes07, mes08, mes09, mes10, mes11, mes12;
+var orcamento = new Orcamento();
+var lista = new Lista();
 
 window.onload = function () {
     document.querySelector("#meses-form").addEventListener("submit", function (e) {
@@ -10,9 +14,10 @@ window.onload = function () {
         escreverOrcamento();
         let valorFinal = orcar();
         alert("VAlor De geração: " + valorFinal.toFixed(2));
-        salvar();
         alert("DADOS SALVOS NA MEMORIA DO NAVEGADOR ");
         _salvarObjeto();
+        console.log(lista);
+        limpar();
 
     });
 
@@ -38,7 +43,6 @@ function calcularMediaAnual() {
 
 
 function escreverAMediaAnual() {
-
     //evento(event);
     var mediaAnual = calcularMediaAnual();
     var med = document.getElementById("media");
@@ -85,16 +89,22 @@ function salvar() {
     localStorage.geracao = document.getElementById("geracao").value
 }
 
-function _salvarObjeto() {
-    const lista = new Lista();
-    const orcamento = new Orcamento();
-    orcamento.custoDisponibilidade = Number(localStorage.custo);
-    orcamento.horasSol = Number(localStorage.horasSol);
-    orcamento.fator = Number(localStorage.fator);
-    orcamento.media = Number(localStorage.media);
-    orcamento.valorGerado = Number(localStorage.geracao);
-    lista.adicionarNovoOrcamento(orcamento);
+function limpar(){
+    localStorage.removeItem("custo");
+    localStorage.removeItem("horasSol");
+    localStorage.removeItem("fator");
+    localStorage.removeItem("media");
+    localStorage.removeItem("geracao");
+}
 
+function _salvarObjeto() {
+    var novoOrcamento = new Orcamento();
+    novoOrcamento.custoDisponibilidade = Number(localStorage.custo);
+    novoOrcamento.horasSol = Number(localStorage.horasSol);
+    novoOrcamento.fator = Number(localStorage.fator);
+    novoOrcamento.media = Number(localStorage.media);
+    novoOrcamento.valorGerado = Number(localStorage.geracao);
+    lista.adicionarNovoOrcamento(novoOrcamento);
 }
 
 

@@ -11,7 +11,6 @@ class Lista {
         let quantidade = this._orcamentos.length;
         return quantidade;
     }
-
-
 }
 
+export { Lista };
