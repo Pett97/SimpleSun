@@ -1,6 +1,4 @@
-import { LOGIN_PADRAO,SENHA_PADRAO2, SENHA_PADRAO } from "../javascript/shared.js";
-
-
+import { LOGIN_PADRAO, SENHA_PADRAO2, SENHA_PADRAO } from "../javascript/shared.js";
 
 const entrar = document.getElementById("teste");
 entrar.addEventListener('click', logar);
@@ -13,14 +11,12 @@ function logar() {
     var login = login_informado.toLowerCase().trim();
     var senha = senha_informada.toLowerCase().trim();
 
-    if (login === LOGIN_PADRAO && senha === SENHA_PADRAO2) {
-        alert("SENHA CORRETA")
-    }
-    if (login === LOGIN_PADRAO && senha === SENHA_PADRAO2) {
-        alert("SENHA CORRETA")
-    }
+    if (login == LOGIN_PADRAO && senha == SENHA_PADRAO) {
+        location.href = 'redirect.html';
+        }
+    
     else {
-        alert("ALGO DE ERRADO NÃO ESTÁ CERTO")
+        alert("SENHA OU/E LOGIN ERRADO(S)")
     }
 }
 
