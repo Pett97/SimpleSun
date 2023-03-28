@@ -1,16 +1,25 @@
-class Lista {
-    constructor() {
-        this._orcamentos = [];
-    }
+export default class Lista {
+  constructor(nome) {
+    this.nome = nome;
+    this.itens = [];
+  }
 
-    adicionarNovoOrcamento(orcamento) {
-         return this._orcamentos.push(orcamento);
-    }
+  adicionar(item) {
+    this.itens.push(item);
+  }
 
-    quantidadeDeOrcamentos(){
-        let quantidade = this._orcamentos.length;
-        return quantidade;
+  remover(index) {
+    this.itens.splice(index, 1);
+  }
+
+  salvarLocalStorage() {
+    localStorage.setItem(this.nome, JSON.stringify(this.itens));
+  }
+
+  carregarLocalStorage() {
+    const itensLocalStorage = JSON.parse(localStorage.getItem(this.nome));
+    if (itensLocalStorage) {
+      this.itens = itensLocalStorage;
     }
+  }
 }
-
-export { Lista };

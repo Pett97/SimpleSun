@@ -31,181 +31,62 @@
         </nav>
     </header>
     <div class="medium-space"></div>
-    <div>
-        <div class="s12 m12 l12">
-            <nav class="amber5">
-                <h5 class="max center-align">Média Anual</h5>
-            </nav>
-        </div>
-    </div>
-    <div class="medium-space"></div>
-    <form id="meses-form" action="">
+    <form id="formulario_orcamento" action="">
         <div class="grid">
-            <div class="s12 m6 l2">
-                <div class="field label round border">
-                    <input type="number" id="janeiro" min="0">
-                    <label></label>
-                    <span class="helper">Janeiro</span>
+            <div class="l6 s12 m6">
+                <div class="field label border small round">
+                    <input id="media_anual" type="number" min="1">
+                    <label>Media Anual</label>
                 </div>
             </div>
-            <div class="s12 m6 l2">
-                <div class="field label round border">
-                    <input type="number" id="feveiro" min="0">
-                    <label></label>
-                    <span class="helper">Fevereiro</span>
+            <div class="l6 s12 m6">
+                <div class="field label border small round">
+                    <input id="horas_sol" type="number" min="1">
+                    <label>Horas De Sol</label>
                 </div>
             </div>
-            <div class="s12 m6 l2">
-                <div class="field label round border">
-                    <input type="number" id="marco" min="0">
-                    <label></label>
-                    <span class="helper">Março</span>
+            <div class="l6 s12 m6">
+                <div class="field label border small round">
+                    <input id="potencia" type="number" any>
+                    <label>Potencia de Geração da Placa</label>
                 </div>
             </div>
-            <div class="s12 m6 l2">
-                <div class="field label round border">
-                    <input type="number" id="abril" min="0">
-                    <label></label>
-                    <span class="helper">Abril</span>
+            <div class="l6 s12 m6">
+                <div class="field label border small round">
+                    <input id="custo_minimo" type="number" min="30">
+                    <label>Custo Minimo</label>
                 </div>
             </div>
-            <div class="s12 m6 l2">
-                <div class="field label round border">
-                    <input type="number" id="maio" min="0">
-                    <label></label>
-                    <span class="helper">Maio</span>
-                </div>
-            </div>
-            <div class="s12 m6 l2">
-                <div class="field label round border">
-                    <input type="number" id="junho" min="0">
-                    <label></label>
-                    <span class="helper">Junho</span>
-                </div>
-            </div>
-            <div class="s12 m6 l2">
-                <div class="field label round border">
-                    <input type="number" id="junho" min="0">
-                    <label></label>
-                    <span class="helper">Junho</span>
-                </div>
-            </div>
-            <div class="s12 m6 l2">
-                <div class="field label round border">
-                    <input type="number" id="julho" min="0">
-                    <label></label>
-                    <span class="helper">Julho</span>
-                </div>
-            </div>
-            <div class="s12 m6 l2">
-                <div class="field label round border">
-                    <input type="number" id="agosto" min="0">
-                    <label></label>
-                    <span class="helper">Agosto</span>
-                </div>
-            </div>
-            <div class="s12 m6 l2">
-                <div class="field label round border">
-                    <input type="number" id="setembro" min="0">
-                    <label></label>
-                    <span class="helper">Setembro</span>
-                </div>
-            </div>
-            <div class="s12 m6 l2">
-                <div class="field label round border">
-                    <input type="number" id="outubro" min="0">
-                    <label></label>
-                    <span class="helper">Outubro</span>
-                </div>
-            </div>
-            <div class="s12 m6 l2">
-                <div class="field label round border">
-                    <input type="number" id="novembro" min="0">
-                    <label></label>
-                    <span class="helper">Novembro</span>
-                </div>
-            </div>
-            <div class="s12 m6 l2">
-                <div class="field label round border">
-                    <input type="number" id="dezembro" min="0">
-                    <label></label>
-                    <span class="helper">Dezembro</span>
+            <div class="l6 s12 m6">
+                <div class="field label border small round">
+                    <button id="calcular" class="responsive black">
+                        <i>calculate</i>
+                        <span>Calcular</span>
+                    </button>
                 </div>
             </div>
         </div>
-        <div class="medium-space"></div>
-        <div class="s12 m12 l12">
-            <nav class="amber5">
-                <h6 class="max center-align">Calcular Orçamento </h6>
-            </nav>
-        </div>
+        <div class="medium-divider"></div>
         <div class="grid">
-            <div class="s12 m12 l6">
-                <div class="field label round border">
-                    <input type="number" id="custo_diponibilidade" min="0" any>
-                    <span class="helper">Custo De Disponibilidade</span>
+            <div class="l6 s12 m6">
+                <div class="field label border small round">
+                    <input id="geracao" type="number"  readonly>
+                    <label>Potencial de Geraçãoem KW/h</label>
                 </div>
             </div>
-            <div class="s12 m12 l6">
-                <div class="field label round border">
-                    <input type="number" id="horas_sol" any>
-                    <span class="helper">Horas De sol</span>
+            <div class="l6 s12 m6">
+                <div class="field label border small round">
+                    <button id="salvar" class="responsive green" type="submit">
+                        <i>save</i>
+                        <span>Salvar</span>
+                    </button>
                 </div>
-            </div>
-            <div class="s12 m12 l6">
-                <div class="field label round border">
-                    <input type="number" id="fator" min="0">
-                    <span class="helper">Fator de Geração</span>
-                </div>
-            </div>
-            <div class="s6 m6 l6">
-                <div class="field label round border">
-                    <span class="helper">Media Anual</span>
-                    <input type="text" any id="media" readonly>
-                </div>
-            </div>
-            <div class="s12 m6 l6">
-                <div class="field label round border">
-                    <input type="number" id="geracao" readonly>
-                    <span class="helper">Geração em KW/H</span>
-                </div>
-            </div>
-            <div class="s12 m6  l6">
-                <div class="field middle-align">
-                    <nav>
-                        <label class="radio">
-                            <input type="radio" name="radio4_">
-                            <span>Monofasica</span>
-                        </label>
-                        <label class="radio">
-                            <input type="radio" name="radio4_">
-                            <span>Bifasica</span>
-                        </label>
-                        <label class="radio">
-                            <input type="radio" name="radio4_">
-                            <span>Trifasica</span>
-                        </label>
-                    </nav>
-                    <span class="helper">Selecione</span>
-                </div>
-            </div>
-            <div class="s12 m6 l6">
-                <button class="responsive grey7 " id="orcar">
-                    <i>calculate</i>
-                    <span>Calcular Geração</span>
-                </button>
-            </div>
-            
-            <div class="s12 m6 l6">
-                <button class="responsive green " id="salvar">
-                    <i>save</i>
-                    <span>Salvar</span>
-                </button>
             </div>
         </div>
     </form>
+
     <div class="medium-space"></div>
-    <script type="module" src="/javascript/calcular.js"></script>
+    <script src="/javascript/calcular.js"></script>
     <script type="module" src="/javascript/orcamento.js"></script>
     <script type="module" src="/javascript/lista.js"></script>
     <script type="module" src="/node_modules/beercss/dist/cdn/beer.min.js"></script>

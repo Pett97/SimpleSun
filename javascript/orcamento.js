@@ -1,71 +1,47 @@
-class Orcamento {
-  static _proximoId = 1;
-
-  constructor() {
-    this._id = Orcamento._proximoId++;
-    this._custoDisponibilidade = localStorage.custo;
-    this._horasSol = localStorage.horasSol;
-    this._fator = localStorage.fator / 100 ;
-    this._media = localStorage.media;
-    this._mediasDias = 30.4;
-    this._resultado = localStorage.geracao;
+export class Orcamento {
+    constructor(mediaAnual, horasSolares, potenciaPlaca, custoMinimo) {
+      this._mediaAnual = mediaAnual;
+      this._horasSolares = horasSolares;
+      this._potenciaPlaca = potenciaPlaca;
+      this._custoMinimo = custoMinimo;
+    }
+  
+    get mediaAnual() {
+      return this._mediaAnual;
+    }
+  
+    set mediaAnual(mediaAnual) {
+      this._mediaAnual = mediaAnual;
+    }
+  
+    get horasSolares() {
+      return this._horasSolares;
+    }
+  
+    set horasSolares(horasSolares) {
+      this._horasSolares = horasSolares;
+    }
+  
+    get potenciaPlaca() {
+      return this._potenciaPlaca;
+    }
+  
+    set potenciaPlaca(potenciaPlaca) {
+      this._potenciaPlaca = potenciaPlaca;
+    }
+  
+    get custoMinimo() {
+      return this._custoMinimo;
+    }
+  
+    set custoMinimo(custoMinimo) {
+      this._custoMinimo = custoMinimo;
+    }
+  
+    calcularGeracao() {
+      let valorGerado =
+        (this._mediaAnual - this._custoMinimo) /
+        (this._horasSolares * (this._potenciaPlaca / 100) * 30.4);
+      return valorGerado;
+    }
   }
-
-
-  get resultado(){
-    return this._resultado;
-  }
-
-  set resultado(novoResultado){
-    return this._resultado = novoResultado;
-  }
-
-  get id() {
-    return this._id;
-  }
-
-  get valorGerado() {
-    let valorGerado = ((this._media - this._custoDisponibilidade) / (this._horasSol * (this._fator / 100) * this._mediasDias));
-    return valorGerado.toFixed(2);
-  }
-
-  set valorGerado(novoValor){
-    return this._valorGerado = novoValor;
-  }
-
-  get media() {
-    return this._media;
-  }
-
-  set media(novaMedia) {
-    return this._media = novaMedia;
-  }
-
-  get fator() {
-    return this._fator;
-  }
-
-  set fator(novoFator) {
-    return this._fator = (novoFator / 100) ;
-  }
-
-  get horasSol() {
-    return this._horasSol;
-  }
-
-  set horasSol(editarHoras) {
-    return this._horasSol = editarHoras;
-  }
-
-  get custoDisponibilidade() {
-    return this._custoDisponibilidade;
-  }
-
-  set custoDisponibilidade(novoCusto) {
-    return this._custoDisponibilidade = novoCusto;
-  }
-
-}
-
-export { Orcamento };
-
