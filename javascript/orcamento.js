@@ -1,9 +1,10 @@
 export class Orcamento {
-    constructor(mediaAnual, horasSolares, potenciaPlaca, custoMinimo) {
+    constructor(potenciaPlaca, mediaAnual, horasSolares, custoMinimo, valorGerado) {
       this._mediaAnual = mediaAnual;
       this._horasSolares = horasSolares;
       this._potenciaPlaca = potenciaPlaca;
       this._custoMinimo = custoMinimo;
+      this._valorGerado = valorGerado;
     }
   
     get mediaAnual() {

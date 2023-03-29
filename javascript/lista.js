@@ -1,4 +1,4 @@
-export default class Lista {
+export  class Lista {
   constructor(nome) {
     this.nome = nome;
     this.itens = [];

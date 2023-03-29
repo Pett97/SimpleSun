@@ -1,4 +1,6 @@
-function prevenirDefault(e){
+import { Orcamento } from "./orcamento.js";
+
+function prevenirDefault(e) {
   e.preventDefault();
 }
 
@@ -35,14 +37,28 @@ function escreverOrcamento() {
 }
 
 const botaoCalcular = document.getElementById("calcular");
-botaoCalcular.addEventListener("click", function(event){
+botaoCalcular.addEventListener("click", function (event) {
   prevenirDefault(event);
   escreverOrcamento();
 });
 
 const botaoSalvar = document.getElementById("salvar");
-botaoSalvar.addEventListener("click", salvar);
+botaoSalvar.addEventListener("click", function (event) {
+  prevenirDefault(event);
+  salvar();
+})
 
-function salvar(){
-  alert("salvar");
+function salvar() {
+  let orcamento = {
+    potencia: potenciaPlaca(),
+    media: mediaAnual(),
+    horas: horasSolares(),
+    custo: custoMinimo(),
+    valorGerado: calcularGeracao()
+  };
+  localStorage.setItem("orcamento", JSON.stringify(orcamento));
+  let orcamentoString = localStorage.getItem("orcamento");
+  let orcamentoOBJ = JSON.parse(orcamentoString);
+  console.log(orcamentoOBJ);
 }
+
