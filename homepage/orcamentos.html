@@ -35,6 +35,12 @@
         <div class="grid">
             <div class="l6 s12 m6">
                 <div class="field label border small round">
+                    <input id="nome_cliente" type="text" >
+                    <label>Nome Cliente</label>
+                </div>
+            </div>
+            <div class="l6 s12 m6">
+                <div class="field label border small round">
                     <input id="media_anual" type="number" min="1">
                     <label>Media Anual</label>
                 </div>
@@ -59,7 +65,7 @@
             </div>
             <div class="l6 s12 m6">
                 <div class="field label border small round">
-                    <button id="calcular" class="responsive black">
+                    <button id="calcularBot" class="responsive black">
                         <i>calculate</i>
                         <span>Calcular</span>
                     </button>
@@ -76,6 +82,12 @@
             </div>
             <div class="l6 s12 m6">
                 <div class="field label border small round">
+                    <input id="valor_venda" type="number">
+                    <label>Valor Venda</label>
+                </div>
+            </div>
+            <div class="l6 s12 m6">
+                <div class="field label border small round">
                     <button id="salvar" class="responsive green" type="submit">
                         <i>save</i>
                         <span>Salvar</span>
@@ -86,9 +98,11 @@
     </form>
 
     <div class="medium-space"></div>
+    <script type="module" src="/javascript/listagem.js"></script>
     <script type="module" src="/javascript/calcular.js"></script>
-    <script type="module" src="/javascript/orcamento.js"></script>
     <script type="module" src="/javascript/lista.js"></script>
+    <script type="module" src="/javascript/orcamento.js"></script>
+    
     <script type="module" src="/node_modules/beercss/dist/cdn/beer.min.js"></script>
 </body>
 

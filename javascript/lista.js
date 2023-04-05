@@ -1,9 +1,17 @@
-export  class Lista {
+export class Lista {
   constructor(nome) {
     this.nome = nome;
     this.itens = [];
   }
 
+
+  getQuantidade() {
+    return this.itens.length();
+  }
+
+  imprimir() {
+    console.log(this.itens);
+  }
   adicionar(item) {
     this.itens.push(item);
   }
@@ -22,4 +30,7 @@ export  class Lista {
       this.itens = itensLocalStorage;
     }
   }
+
 }
+
+
