@@ -1,7 +1,11 @@
 import { lista } from "./calcular.js";
 
-function imprimirDados() {
-  lista.imprimir();
-}
+document.addEventListener('DOMContentLoaded', function () {
+  const teste = document.getElementById("testeLista");
+  teste.addEventListener("click", imprimir);
+});
 
-imprimirDados();
+function imprimir(){
+    alert("vou imprimir a lista");
+    console.log(lista);
+}

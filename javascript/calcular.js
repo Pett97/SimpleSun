@@ -1,31 +1,34 @@
+document.addEventListener('DOMContentLoaded', function () {
+
+  const botaoCalcular = document.getElementById("calcularBot");
+  botaoCalcular.addEventListener("click", function (event) {
+    prevenirDefault(event);
+    escreverOrcamento();
+  });
+
+  const botaoSalvar = document.getElementById("salvar");
+  botaoSalvar.addEventListener("click", function (event) {
+    prevenirDefault(event);
+    salvar();
+  });
+});
 
 import { Lista } from "./lista.js";
 
- const lista = new Lista();
+export const lista = new Lista();
 
 function prevenirDefault(e) {
   e.preventDefault();
 }
 
-const botaoCalcular = document.getElementById("calcularBot");
-botaoCalcular.addEventListener("click", function (event) {
-  prevenirDefault(event);
-  escreverOrcamento();
-});
-
-const botaoSalvar = document.getElementById("salvar");
-botaoSalvar.addEventListener("click", function (event) {
-  prevenirDefault(event);
-  salvar();
-})
 
 
-function valorDeVenda(){
+function valorDeVenda() {
   let valorDaVenda = Number(document.getElementById("valor_venda").value);
   return valorDaVenda;
 }
 
-function nomeCliente(){
+function nomeCliente() {
   let nome = String(document.getElementById("nome_cliente").value);
   return nome;
 }
@@ -62,8 +65,6 @@ function escreverOrcamento() {
   prevenirDefault(event);
 }
 
-
-
 function salvar() {
   let orcamento = {
     nome: nomeCliente(),
@@ -77,18 +78,10 @@ function salvar() {
   localStorage.setItem("orcamento", JSON.stringify(orcamento));
   let orcamentoString = localStorage.getItem("orcamento");
   let orcamentoOBJ = JSON.parse(orcamentoString);
-  //teste 
-  console.log(orcamentoOBJ);
   lista.adicionar(orcamentoOBJ);
-  let orcamentoRecuperado =  orcamentoOBJ;
+  let orcamentoRecuperado = orcamentoOBJ;
   console.log("bejeto");
   console.log(orcamentoRecuperado);
   lista.imprimir();
+  localStorage.setItem("lista", JSON.stringify(lista));
 }
-
-export {lista};
-
-
-
-
-
