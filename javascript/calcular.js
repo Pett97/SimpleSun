@@ -1,3 +1,12 @@
+var nomedocumento = document.title;
+
+window.onfocus = function() {
+  document.title = nomedocumento;
+};
+window.onblur = function() {
+  document.title = "Voltar";
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 
   const botaoCalcular = document.getElementById("calcularBot");
