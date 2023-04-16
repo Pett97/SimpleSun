@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/css/estilo.css">
     <title>SimpleSun</title>
 </head>
-
 <body class="yellow2">
     <header class="amber5">
         <nav>
@@ -45,37 +44,136 @@
             <h5 class="max center-align">SimpleSun</h5>
         </nav>
     </header>
-    <div class="medium-space"></div>
+    <!-- modais -->
+
+    <div class="modal" id="modal">
+        <h5>Nome do Cliente</h5>
+        <p>pode preencher o nome completo ou o primeiro nome</p>
+        <nav>
+            <button data-ui="#modal">OK</button>
+        </nav>
+    </div>
+
+    <div class="modal" id="modal2">
+        <h5>Media Anual</h5>
+        <p>seria a media de todo o consumo em WATTS do cliente / 12</p>
+        <nav>
+            <button data-ui="#modal2">OK</button>
+        </nav>
+    </div>
+
+    <div class="modal" id="modal3">
+        <h5>Horas de Sol</h5>
+        <p>Horas de incidencia de sol , preencher com valor inteiro exemplo 5 </p>
+        <nav>
+            <button data-ui="#modal3">OK</button>
+        </nav>
+    </div>
+
+    <div class="modal" id="modal4">
+        <h5>Potencia placa</h5>
+        <p>potencia deve ser informada em numeros inteiros exemplo 89, o sistema irá transformar em %  </p>
+        <nav>
+            <button data-ui="#modal4">OK</button>
+        </nav>
+    </div>
+
+    <div class="modal" id="modal5">
+        <h5>Custo Minimo</h5>
+        <p>Valor minimo da Tarifa </p>
+        <nav>
+            <button data-ui="#modal5">OK</button>
+        </nav>
+    </div>
+
+    <div class="modal left" id="modal6">
+        <h5>Atalhos do teclado</h5>
+        <div class="left-align">
+            <ul class="justified">
+                <li>USE "C" PARA CALCULAR</li>
+                <li>USE "S" PARA SALVAR</li>
+                <li>USE "H" PARA VOLTAR A HomePage</li>
+                <li>H so pode ser usado antes de clicar em algum campo</li>
+              </ul>
+        </div>
+        <nav>
+            <button data-ui="#modal6">OK</button>
+        </nav>
+    </div>
+
+    <div class="modal top" id="modal7">
+        <h5>Orçamento Salvo !!!</h5>
+        <div class="left-align">
+            <ul class="justified">
+                <li>USE "C" PARA CALCULAR</li>
+                <li>USE "S" PARA SALVAR</li>
+                <li>USE "H" PARA VOLTAR A HomePage</li>
+                <li>H so pode ser usado antes de clicar em algum campo</li>
+              </ul>
+        </div>
+        <nav>
+            <button data-ui="#modal7">OK</button>
+        </nav>
+    </div>
+
+
+    <button class="extend transparent circle extra" data-ui="#modal6">
+        <i>info</i>
+        <span>Atalhos do teclado</span>
+      </button>
+
     <form id="formulario_orcamento" action="">
         <div class="grid">
             <div class="l6 s12 m6">
                 <div class="field label border small round">
-                    <input id="nome_cliente" type="text" >
-                    <label>Nome Cliente</label>
+                    <input id="nome_cliente" type="text">
+                    <label>Nome Cliente <button type="button" class="transparent circle" data-ui="#modal">
+                            <i>face</i>
+                        </button>
+                    </label>
                 </div>
             </div>
             <div class="l6 s12 m6">
                 <div class="field label border small round">
                     <input id="media_anual" type="number" min="1">
-                    <label>Media Anual</label>
+                    <label>Media Anual
+                        <button type="button" class="transparent circle" data-ui="#modal2">
+                            <i>functions</i>
+                        </button>
+                    </label>
                 </div>
             </div>
             <div class="l6 s12 m6">
                 <div class="field label border small round">
                     <input id="horas_sol" type="number" min="1">
-                    <label>Horas De Sol</label>
+                    <label>Horas De Sol
+                        <button type="button" class="transparent circle" data-ui="#modal3">
+                            <i>Sunny</i>
+                        </button>
+                    </label>
                 </div>
             </div>
             <div class="l6 s12 m6">
                 <div class="field label border small round">
+
                     <input id="potencia" type="number" any>
-                    <label>Potencia de Geração da Placa</label>
+                    <label>Potencia de Geração da Placa
+                        <button type="button" class="transparent circle" data-ui="#modal4">
+                            <i>bolt</i>
+                        </button>
+                    </label>
+                    
                 </div>
             </div>
+            
             <div class="l6 s12 m6">
                 <div class="field label border small round">
                     <input id="custo_minimo" type="number" min="30">
-                    <label>Custo Minimo</label>
+                    <label>Custo Minimo
+                        <button type="button" class="transparent circle" data-ui="#modal5">
+                            <i>finance_chip</i>
+                        </button>
+                    </label>
                 </div>
             </div>
             <div class="l6 s12 m6">
@@ -90,20 +188,21 @@
         <div class="medium-divider"></div>
         <div class="grid">
             <div class="l6 s12 m6">
-                <div class="field label border small round">
-                    <input id="geracao" type="number"  readonly>
-                    <label>Potencial de Geraçãoem KW/h</label>
+                <div class="field  border small round">
+                    <p>Potencial de Geraçãoem KW/h</p>
+                    <input id="geracao" type="number" readonly>
+                    
                 </div>
             </div>
             <div class="l6 s12 m6">
-                <div class="field label border small round">
+                <div class="field  border small round">
+                    <p>Valor Venda</p>
                     <input id="valor_venda" type="number">
-                    <label>Valor Venda</label>
                 </div>
             </div>
             <div class="l6 s12 m6">
                 <div class="field label border small round">
-                    <button id="salvar" class="responsive green" type="submit">
+                    <button id="salvar" class="responsive green" type="button"  data-ui="#modal7">
                         <i>save</i>
                         <span>Salvar</span>
                     </button>
@@ -116,7 +215,7 @@
     <script type="module" src="/javascript/calcular.js"></script>
     <script type="module" src="/javascript/lista.js"></script>
     <script type="module" src="/javascript/orcamento.js"></script>
-    
+
     <script type="module" src="/node_modules/beercss/dist/cdn/beer.min.js"></script>
 </body>
 

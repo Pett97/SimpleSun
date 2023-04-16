@@ -1,3 +1,6 @@
+
+let inputClicado = false;
+
 var nomedocumento = document.title;
 
 window.onfocus = function() {
@@ -20,6 +23,26 @@ document.addEventListener('DOMContentLoaded', function () {
     prevenirDefault(event);
     salvar();
   });
+
+  document.querySelectorAll('input').forEach(function(input) {
+    input.addEventListener('click', function() {
+      inputClicado = true;
+    });
+  });
+
+  document.addEventListener('keypress', function(event) {
+    if (!inputClicado && event.key === 'h' || event.key === 'H') {
+      window.location.href = '/homepage/homepage.html';
+    }
+
+  });
+
+  document.addEventListener('keypress', function(event) {
+    if (event.key === 'c' || event.key === 'C') {
+      escreverOrcamento();
+    }
+  });
+
 });
 
 import { Lista } from "./lista.js";
@@ -65,6 +88,7 @@ function custoMinimo() {
 function calcularGeracao() {
   let valorGerado = (mediaAnual() - custoMinimo()) / ((horasSolares() * (potenciaPlaca() / 100)) * 30.4);
   return valorGerado;
+  
 }
 
 function escreverOrcamento() {

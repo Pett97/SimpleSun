@@ -36,4 +36,9 @@ body.light {
   --speed2: .2s;
   --speed3: .3s;
   --speed4: .4s;
+  
+}
+
+ul{
+  list-style: none;
 }
