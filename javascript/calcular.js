@@ -13,7 +13,7 @@ window.onblur = function() {
 document.addEventListener('DOMContentLoaded', function () {
 
   const botaoCalcular = document.getElementById("calcularBot");
-  botaoCalcular.addEventListener("click", function (event) {
+  botaoCalcular.addEventListener("click", function () {
     prevenirDefault(event);
     escreverOrcamento();
   });
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 import { Lista } from "./lista.js";
 
-export const lista = new Lista();
+const lista = new Lista();
 
 function prevenirDefault(e) {
   e.preventDefault();
@@ -108,13 +108,16 @@ function salvar() {
     valorGerado: calcularGeracao(),
     valorVenda: valorDeVenda()
   };
-  localStorage.setItem("orcamento", JSON.stringify(orcamento));
-  let orcamentoString = localStorage.getItem("orcamento");
-  let orcamentoOBJ = JSON.parse(orcamentoString);
-  lista.adicionar(orcamentoOBJ);
-  let orcamentoRecuperado = orcamentoOBJ;
-  console.log("bejeto");
-  console.log(orcamentoRecuperado);
+  //localStorage.setItem("orcamento", JSON.stringify(orcamento));
+  //let orcamentoString = localStorage.getItem("orcamento");
+  //let orcamentoOBJ = JSON.parse(orcamentoString);
+  lista.carregarLocalStorage();
+  lista.adicionar(orcamento);
+  //let orcamentoRecuperado = orcamentoOBJ;
+  //console.log("bejeto");
+  //console.log(orcamentoRecuperado);
   lista.imprimir();
   localStorage.setItem("lista", JSON.stringify(lista));
 }
+
+
