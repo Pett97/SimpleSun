@@ -1,37 +1,11 @@
+import { listarTabela } from "./calcular.js";
 
-export class Lista {
-  constructor(nome) {
-    this.nome = nome;
-    this.itens = [];
+
+
+const listar = document.getElementById("TesteDeLista");
+  listar.addEventListener("click", teste);
+
+
+  function teste(){
+    listarTabela();
   }
-
-
-  getQuantidade() {
-    return this.itens.length();
-  }
-
-  imprimir() {
-    console.log(this.itens);
-  }
-  adicionar(item) {
-    this.itens.push(item);
-  }
-
-  remover(index) {
-    this.itens.splice(index, 1);
-  }
-
-  salvarLocalStorage() {
-    localStorage.setItem(this.nome, JSON.stringify(this.itens));
-  }
-
-  carregarLocalStorage() {
-    const itensLocalStorage = JSON.parse(localStorage.getItem(this.nome));
-    if (itensLocalStorage) {
-      this.itens = itensLocalStorage;
-    }
-  }
-
-}
-
-

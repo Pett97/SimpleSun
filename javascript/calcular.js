@@ -3,17 +3,21 @@ let inputClicado = false;
 
 var nomedocumento = document.title;
 
-window.onfocus = function() {
+window.onfocus = function () {
   document.title = nomedocumento;
 };
-window.onblur = function() {
+window.onblur = function () {
   document.title = "Voltar";
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+import { Lista } from "./orcamento.js";
 
+const listaDeOrcamentos = new Lista();
+
+document.addEventListener('DOMContentLoaded', function () {
+  
   const botaoCalcular = document.getElementById("calcularBot");
-  botaoCalcular.addEventListener("click", function () {
+  botaoCalcular.addEventListener("click", function (event) {
     prevenirDefault(event);
     escreverOrcamento();
   });
@@ -24,30 +28,26 @@ document.addEventListener('DOMContentLoaded', function () {
     salvar();
   });
 
-  document.querySelectorAll('input').forEach(function(input) {
-    input.addEventListener('click', function() {
+  document.querySelectorAll('input').forEach(function (input) {
+    input.addEventListener('click', function () {
       inputClicado = true;
     });
   });
 
-  document.addEventListener('keypress', function(event) {
+  document.addEventListener('keypress', function (event) {
     if (!inputClicado && event.key === 'h' || event.key === 'H') {
       window.location.href = '/homepage/homepage.html';
     }
 
   });
 
-  document.addEventListener('keypress', function(event) {
+  document.addEventListener('keypress', function (event) {
     if (event.key === 'c' || event.key === 'C') {
       escreverOrcamento();
     }
   });
 
 });
-
-import { Lista } from "./lista.js";
-
-const lista = new Lista();
 
 function prevenirDefault(e) {
   e.preventDefault();
@@ -88,7 +88,7 @@ function custoMinimo() {
 function calcularGeracao() {
   let valorGerado = (mediaAnual() - custoMinimo()) / ((horasSolares() * (potenciaPlaca() / 100)) * 30.4);
   return valorGerado;
-  
+
 }
 
 function escreverOrcamento() {
@@ -98,26 +98,53 @@ function escreverOrcamento() {
   prevenirDefault(event);
 }
 
+
 function salvar() {
   let orcamento = {
     nome: nomeCliente(),
-    potencia: potenciaPlaca(),
     media: mediaAnual(),
+    potencia: potenciaPlaca(),
     horas: horasSolares(),
     custo: custoMinimo(),
     valorGerado: calcularGeracao(),
     valorVenda: valorDeVenda()
   };
-  //localStorage.setItem("orcamento", JSON.stringify(orcamento));
-  //let orcamentoString = localStorage.getItem("orcamento");
-  //let orcamentoOBJ = JSON.parse(orcamentoString);
-  lista.carregarLocalStorage();
-  lista.adicionar(orcamento);
-  //let orcamentoRecuperado = orcamentoOBJ;
-  //console.log("bejeto");
-  //console.log(orcamentoRecuperado);
-  lista.imprimir();
-  localStorage.setItem("lista", JSON.stringify(lista));
+  listaDeOrcamentos.adicionar(orcamento);
+  console.log(listaDeOrcamentos);
+
+  localStorage.setItem("orcamento-" + Date.now(), JSON.stringify(orcamento));
 }
+
+function imprimirNoConsole() {
+  console.log("teste");
+  console.log(listaDeOrcamentos);
+}
+
+export function listarTabela(){
+  for(let i = 0; i < listaDeOrcamentos.getQuantidade();i++){
+    let tbody = document.getElementById("tbody");
+  {
+    let tr = tbody.insertRow();
+    let td_id = tr.insertCell();
+    let td_nomeClinete = tr.insertCell();
+    let td_mediaAnual = tr.insertCell();
+    let td_potenciaPlaca = tr.insertCell();
+    let td_horasSolares = tr.insertCell();
+    let td_custoMinimo = tr.insertCell();
+    let td_valorGerado = tr.insertCell();
+    let td_valorVenda = tr.insertCell();
+
+    td_id = 1;
+    td_nomeClinete = listaDeOrcamentos.orcamento.nomeCliente;
+    td_mediaAnual = listaDeOrcamentos.orcamento.mediaAnual;
+    td_potenciaPlaca = listaDeOrcamentos.orcamento.potencia;
+    td_horasSolares = listaDeOrcamentos.orcamento.horasSolares;
+    td_custoMinimo = listaDeOrcamentos.custo;
+    td_valorGerado = listaDeOrcamentos.valorGerado;
+    td_valorVenda = listaDeOrcamentos.valorVenda;
+  }
+  }
+}
+
 
 

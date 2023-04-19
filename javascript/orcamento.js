@@ -1,4 +1,4 @@
-export class Orcamento {
+class Orcamento {
   constructor(nomeCliente, potenciaPlaca, mediaAnual, horasSolares, custoMinimo, valorGerado, valorVenda) {
     this._nomeCliente = nomeCliente;
     this._mediaAnual = mediaAnual;
@@ -8,59 +8,29 @@ export class Orcamento {
     this._valorGerado = valorGerado;
     this._valorVenda = valorVenda;
   }
+}
 
-  get valorVenda(){
-    return this._valorVenda;
+ export class Lista {
+  constructor() {
+    this.lista = [];
   }
 
-  set valorVenda(novoValor){
-    return this._valorVenda = novoValor;
+  adicionar(orcamento) {
+    this.lista.push(orcamento);
   }
 
-  get nomeCliente() {
-    return this._nomeCliente;
+  remover(index) {
+    this.lista.splice(index, 1);
   }
 
-  set nomeCliente(novoNome) {
-    return this._nomeCliente = novoNome.toUpperCase();
+  getQuantidade() {
+    return this.lista.length;
   }
 
-  get mediaAnual() {
-    return this._mediaAnual;
-  }
-
-  set mediaAnual(mediaAnual) {
-    this._mediaAnual = mediaAnual;
-  }
-
-  get horasSolares() {
-    return this._horasSolares;
-  }
-
-  set horasSolares(horasSolares) {
-    this._horasSolares = horasSolares;
-  }
-
-  get potenciaPlaca() {
-    return this._potenciaPlaca;
-  }
-
-  set potenciaPlaca(potenciaPlaca) {
-    this._potenciaPlaca = potenciaPlaca;
-  }
-
-  get custoMinimo() {
-    return this._custoMinimo;
-  }
-
-  set custoMinimo(custoMinimo) {
-    this._custoMinimo = custoMinimo;
-  }
-
-  calcularGeracao() {
-    let valorGerado =
-      (this._mediaAnual - this._custoMinimo) /
-      (this._horasSolares * (this._potenciaPlaca / 100) * 30.4);
-    return valorGerado;
+  getOrcamentos() {
+    return this.lista;
   }
 }
+
+
+
