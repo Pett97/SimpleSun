@@ -126,10 +126,7 @@ function salvar3(){
   localStorage.setItem("minhaLista", JSON.stringify(listaDeOrcamentos));
 }
 
-function imprimirNoConsole() {
-  console.log("teste");
-  console.log(listaDeOrcamentos);
-}
+
 
 
 
