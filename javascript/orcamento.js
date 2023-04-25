@@ -10,7 +10,7 @@ class Orcamento {
   }
 }
 
- export class Lista {
+  class Lista {
   constructor() {
     this.lista = [];
   }
@@ -30,7 +30,15 @@ class Orcamento {
   getOrcamentos() {
     return this.lista;
   }
+
+  getOrcamento(index) {
+    return this.lista[index];
+  }
 }
+
+
+export { Lista };
+export const listaDeOrcamentos = new Lista();
 
 
 

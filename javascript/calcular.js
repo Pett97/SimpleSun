@@ -1,21 +1,5 @@
-
-let inputClicado = false;
-
-var nomedocumento = document.title;
-
-window.onfocus = function () {
-  document.title = nomedocumento;
-};
-window.onblur = function () {
-  document.title = "Voltar";
-}
-
-import { Lista } from "./orcamento.js";
-
-const listaDeOrcamentos = new Lista();
-
 document.addEventListener('DOMContentLoaded', function () {
-  
+
   const botaoCalcular = document.getElementById("calcularBot");
   botaoCalcular.addEventListener("click", function (event) {
     prevenirDefault(event);
@@ -25,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const botaoSalvar = document.getElementById("salvar");
   botaoSalvar.addEventListener("click", function (event) {
     prevenirDefault(event);
-    salvar();
+    salvar3();
   });
 
   document.querySelectorAll('input').forEach(function (input) {
@@ -48,6 +32,21 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+
+
+let inputClicado = false;
+
+var nomedocumento = document.title;
+
+window.onfocus = function () {
+  document.title = nomedocumento;
+};
+window.onblur = function () {
+  document.title = "Voltar";
+}
+
+import { listaDeOrcamentos } from "./orcamento.js";
+
 
 function prevenirDefault(e) {
   e.preventDefault();
@@ -99,7 +98,8 @@ function escreverOrcamento() {
 }
 
 
-function salvar() {
+
+function salvar2(){
   let orcamento = {
     nome: nomeCliente(),
     media: mediaAnual(),
@@ -109,10 +109,21 @@ function salvar() {
     valorGerado: calcularGeracao(),
     valorVenda: valorDeVenda()
   };
-  listaDeOrcamentos.adicionar(orcamento);
-  console.log(listaDeOrcamentos);
+  return orcamento;
+}
 
-  localStorage.setItem("orcamento-" + Date.now(), JSON.stringify(orcamento));
+
+function salvar3(){
+  let orcamento = salvar2();
+
+  let listaDeOrcamentos = JSON.parse(localStorage.getItem("minhaLista"));
+  if (!listaDeOrcamentos) {
+    listaDeOrcamentos = { lista: [] };
+  }
+
+  listaDeOrcamentos.lista.push(orcamento);
+
+  localStorage.setItem("minhaLista", JSON.stringify(listaDeOrcamentos));
 }
 
 function imprimirNoConsole() {
@@ -120,31 +131,8 @@ function imprimirNoConsole() {
   console.log(listaDeOrcamentos);
 }
 
-export function listarTabela(){
-  for(let i = 0; i < listaDeOrcamentos.getQuantidade();i++){
-    let tbody = document.getElementById("tbody");
-  {
-    let tr = tbody.insertRow();
-    let td_id = tr.insertCell();
-    let td_nomeClinete = tr.insertCell();
-    let td_mediaAnual = tr.insertCell();
-    let td_potenciaPlaca = tr.insertCell();
-    let td_horasSolares = tr.insertCell();
-    let td_custoMinimo = tr.insertCell();
-    let td_valorGerado = tr.insertCell();
-    let td_valorVenda = tr.insertCell();
 
-    td_id = 1;
-    td_nomeClinete = listaDeOrcamentos.orcamento.nomeCliente;
-    td_mediaAnual = listaDeOrcamentos.orcamento.mediaAnual;
-    td_potenciaPlaca = listaDeOrcamentos.orcamento.potencia;
-    td_horasSolares = listaDeOrcamentos.orcamento.horasSolares;
-    td_custoMinimo = listaDeOrcamentos.custo;
-    td_valorGerado = listaDeOrcamentos.valorGerado;
-    td_valorVenda = listaDeOrcamentos.valorVenda;
-  }
-  }
-}
+
 
 
 
