@@ -1,3 +1,4 @@
+//autoexecutavel 
 document.addEventListener('DOMContentLoaded', function () {
 
   const botaoCalcular = document.getElementById("calcularBot");
@@ -6,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     escreverOrcamento();
   });
 
+  //Função anônima com argumento
   const botaoSalvar = document.getElementById("salvar");
   botaoSalvar.addEventListener("click", function (event) {
     prevenirDefault(event);
@@ -18,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  //função sem argumento
   document.addEventListener('keypress', function (event) {
     if (!inputClicado && event.key === 'h' || event.key === 'H') {
       window.location.href = '/homepage/homepage.html';
@@ -47,7 +50,7 @@ window.onblur = function () {
 
 import { listaDeOrcamentos } from "./orcamento.js";
 
-
+//fu
 function prevenirDefault(e) {
   e.preventDefault();
 }
