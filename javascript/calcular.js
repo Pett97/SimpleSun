@@ -48,7 +48,7 @@ window.onblur = function () {
   document.title = "Voltar";
 }
 
-import { listaDeOrcamentos } from "./orcamento.js";
+
 
 //fu
 function prevenirDefault(e) {
