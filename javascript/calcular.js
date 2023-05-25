@@ -63,7 +63,7 @@ function valorDeVenda() {
 }
 
 function nomeCliente() {
-  let nome = String(document.getElementById("nome_cliente").value);
+  let nome = String(document.getElementById("nome_cliente").value).toUpperCase();
   return nome;
 }
 

@@ -2,12 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const botaoVender = document.getElementById("venderBot");
   botaoVender.addEventListener("click", function (event) {
     prevenirDefault(event);
-    const id = pegarID() - 1; 
-    const orcamentoProcurado = vender(id);
-    if (orcamentoProcurado) {
-      const valorVenda = orcamentoProcurado.valorVenda;
-      valorDaVenda(valorVenda);
-    }
+    console.log("teste");
+    let x = vender();
+    console.log(x);
   });
 });
 
@@ -15,22 +12,33 @@ function prevenirDefault(e) {
   e.preventDefault();
 }
 
-function pegarID() {
-  const id = Number(document.getElementById("id").value);
+function pegarNome() {
+  let id = String(document.getElementById("nomeCliente").value).toUpperCase();
   return id;
 }
 
-function vender(posicao) {
-  let orcamentosJSON = JSON.parse(localStorage.getItem("minhaLista"));
-  let sizeArray = orcamentosJSON.lista.length;
+//let teste = listaDeOrcamentos.lista[0];
 
-  if (posicao >= 0 && posicao < sizeArray) {
-    let orcamentoProcurado = orcamentosJSON.lista[posicao];
-    console.log(orcamentoProcurado);
-    return orcamentoProcurado;
+
+function vender() {
+  let nomeParaVenda = pegarNome();
+  let listaDeOrcamentos = JSON.parse(localStorage.getItem("minhaLista"));
+  let sizeArray = listaDeOrcamentos.lista.length;
+  
+  
+  for(let i = 0 ;i < sizeArray;i++ ){
+    let orcamento = listaDeOrcamentos.lista[i];
+    if(nomeParaVenda === orcamento.nome){
+       return  listaDeOrcamentos.lista[i];
+    }
   }
+  return null ;
 }
+     
 
-function valorDaVenda(valorVenda) {
-  console.log("Valor de venda:", valorVenda);
-}
+
+
+
+
+
+

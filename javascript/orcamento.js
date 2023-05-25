@@ -39,6 +39,7 @@ class Orcamento {
 
 export { Lista };
 export const listaDeOrcamentos = new Lista();
+export const listaDeVendidos = new Lista();
 
 
 
